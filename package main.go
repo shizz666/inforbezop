@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 const (
-	USD = 80
-	EUR = 94
+	USD = 90.0  // 1 доллар = 90 рублей
+	EUR = 100.0 // 1 евро = 100 рублей
 )
 
 func main() {
@@ -15,10 +15,9 @@ func main() {
 
 	usd := rub / USD
 	eur := rub / EUR
-	usdToEur := usd * USD / EUR
+	usdToEur := usd / EUR
 
 	fmt.Println("Рубли в доллары:", usd, "USD")
-	fmt.Println("Доллары в евро:", usdToEur, "EUR")
 	fmt.Println("Рубли в евро:", eur, "EUR")
-
+	fmt.Println("Доллары в евро:", usdToEur, "EUR")
 }
