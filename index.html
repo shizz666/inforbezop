@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Конвертер валют</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #3b6ef5, #8e54e9);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+    .card {
+      background: #fff;
+      padding: 32px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      margin: 0 0 20px;
+      font-size: 24px;
+      color: #333;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+    }
+    button {
+      width: 100%;
+      margin-top: 12px;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      background: #3b6ef5;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2f58c8;
+    }
+    .results {
+      margin-top: 24px;
+    }
+    .line {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      background: #f2f4f8;
+      border-radius: 12px;
+      color: #333;
+    }
+    .line b {
+      color: #3b6ef5;
+    }
+    .error {
+      margin-top: 16px;
+      color: #d33;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Конвертер валют</h1>
+
+    <form method="GET" action="/">
+      <input type="number" name="rub" step="any" min="0" placeholder="Введите сумму в рублях" value="{{.Input}}">
+      <button type="submit">Конвертировать</button>
+    </form>
+
+    {{if .Error}}
+      <div class="error">{{.Error}}</div>
+    {{end}}
+
+    {{if .Show}}
+      <div class="results">
+        <div class="line"><span>Рубли в доллары</span> <b>{{.USD}} USD</b></div>
+        <div class="line"><span>Рубли в евро</span> <b>{{.EUR}} EUR</b></div>
+        <div class="line"><span>Доллары в евро</span> <b>{{.UsdToEur}} EUR</b></div>
+      </div>
+    {{end}}
+  </div>
+</body>
+</html>
